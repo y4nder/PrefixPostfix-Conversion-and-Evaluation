@@ -39,6 +39,8 @@ public class PostFixConverter extends OperatorPrecedence{
         for(int i = 0; i < expression.length(); i++){
             char character = expression.charAt(i);
             switch(character){
+                case ' ':
+                    break;
                 case '(':
                     stack.push(character);
                     break;
@@ -65,6 +67,7 @@ public class PostFixConverter extends OperatorPrecedence{
                         }
                         stack.push(character);
                     }
+                break;
             }
         }
         while(!stack.isEmpty()){
