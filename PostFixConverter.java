@@ -77,9 +77,6 @@ public class PostFixConverter extends OperatorPrecedence{
         return postFixed.toString();
     }
 
-    private boolean isNumber(char character){
-        return Character.isDigit(character);
-    }
 
     private void addToExpression(char character){
         postFixed.append(character);

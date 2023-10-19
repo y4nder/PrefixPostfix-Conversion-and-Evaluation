@@ -1,5 +1,5 @@
 public class OperatorPrecedence {
-    public int checkPrecedence(char character){
+    protected int checkPrecedence(char character){
         switch(character){
             case '+':
             case '-':
@@ -12,4 +12,9 @@ public class OperatorPrecedence {
         }
         return 0;
     }
+
+    protected boolean isNumber(char character){
+        return Character.isDigit(character);
+    }
+
 }
