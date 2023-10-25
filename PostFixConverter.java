@@ -35,7 +35,6 @@ public class PostFixConverter extends OperatorPrecedence{
 
         expression += ')';
         stack.push('(');
-
         for(int i = 0; i < expression.length(); i++){
             char character = expression.charAt(i);
             switch(character){
@@ -55,6 +54,7 @@ public class PostFixConverter extends OperatorPrecedence{
                         addToExpression(character);
                     }
                     else{
+                        addToExpression('_'); //separator
                         if(fromPrefix){
                             while(checkPrecedence(stack.peek()) > checkPrecedence(character) ){
                                 addToExpression(stack.pop());
@@ -77,9 +77,10 @@ public class PostFixConverter extends OperatorPrecedence{
         return postFixed.toString();
     }
 
-
     private void addToExpression(char character){
         postFixed.append(character);
     }
+
+
 }
 

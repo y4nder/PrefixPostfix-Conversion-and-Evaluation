@@ -16,11 +16,9 @@ public class Pemdas {
         operations.put('*', new DoMultiplication());
         operations.put('^', new DoPower());
         operations.put('%', new DoModulo());
-        operations.put('u', new DoUnaryMinus());
     }
 
     public int solvePostFix(String s){
-        //conversion to postFix
         return Calculate(s, false);
     }
 
@@ -32,7 +30,10 @@ public class Pemdas {
     private int Calculate(String s, boolean fromPrefix){
         for(int i = 0; i < s.length(); i++){
             char character = s.charAt(i);
-            if(operations.containsKey(character)){
+            if(character == '_') {
+                stack.setHasNum(false);
+            }
+            else if(operations.containsKey(character)){
                 operations.get(character).evaluate(stack, fromPrefix);
                 stack.setHasNum(false);
             } 
@@ -42,6 +43,7 @@ public class Pemdas {
                 }
                 else{
                     stack.push( Integer.parseInt(String.valueOf(character)) );
+                    stack.setHasNum(true);
                 }
             }
 

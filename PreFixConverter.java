@@ -9,12 +9,10 @@
  */
 
 public class PreFixConverter{
-    private StringBuilder preFixedExpression;
-    private PostFixConverter converter;
-
+    
     public String convertToPreFix(String expression){
-        converter = new PostFixConverter();
-        preFixedExpression = new StringBuilder(expression);
+        PostFixConverter converter = new PostFixConverter();
+        StringBuilder preFixedExpression = new StringBuilder(expression);
         interChangeParentheses(preFixedExpression);
         preFixedExpression.reverse();
         String postFixedExpression = converter.convertToPostFixThePrefix(preFixedExpression.toString());
