@@ -4,7 +4,7 @@ import MyPemdasFiles.DoOperation;
 
 public class DoUnaryMinus implements DoOperation{
 
-    public void evaluate(CustomIntegerStack stack) {
+    public void evaluate(CustomIntegerStack stack, boolean prefix) {
         int a, result;
         a = stack.pop();
         result = a * (-1);

@@ -5,12 +5,18 @@ import MyPemdasFiles.DoOperation;
 public class DoDivision implements DoOperation{
 
     @Override
-    public void evaluate(CustomIntegerStack stack) {
+    public void evaluate(CustomIntegerStack stack, boolean prefix) {
         int a, b, result;
         a = stack.pop();
         b = stack.pop();
-        result = b / a;
-        System.out.println("    " + b + " / " + a + " = " + result);
+        if(prefix){
+            result = a / b;
+            System.out.println("    " + a + " / " + b + " = " + result);
+        }
+        else{            
+            result = b / a;
+            System.out.println("    " + b + " / " + a + " = " + result);
+        }
         stack.push(result);    
     }
 }

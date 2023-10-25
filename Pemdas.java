@@ -19,16 +19,21 @@ public class Pemdas {
         operations.put('u', new DoUnaryMinus());
     }
 
-    public int solve(String s){
+    public int solvePostFix(String s){
         //conversion to postFix
-        return Calculate(s);
+        return Calculate(s, false);
     }
 
-    public int Calculate(String s){
+    public int solvePrefix(String s){
+        StringBuilder reversed = new StringBuilder(s);
+        return Calculate(reversed.reverse().toString(), true);
+    }
+
+    private int Calculate(String s, boolean fromPrefix){
         for(int i = 0; i < s.length(); i++){
             char character = s.charAt(i);
             if(operations.containsKey(character)){
-                operations.get(character).evaluate(stack);
+                operations.get(character).evaluate(stack, fromPrefix);
                 stack.setHasNum(false);
             } 
             else{
