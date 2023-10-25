@@ -1,12 +1,18 @@
+import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
-        String expression = "3 + 2 + (2 + 1) / 2 * 3 + 1";
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter expression: ");
+        String expression = scan.nextLine();
         PostFixConverter postFix = new PostFixConverter();
-        PreFixConverter preFix = new PreFixConverter();
-        PostToInfix infix = new PostToInfix();
+        String postFixed = postFix.convertToPostFix(expression);
         System.out.println("Expression: " + expression);
-        System.out.println("postfixed: " + postFix.convertToPostFix(expression));
-        System.out.println("prefixed: " + preFix.convertToPreFix(expression));
-        System.out.println("infixed from postFix: " + infix.convertToInfix(postFix.convertToPostFix(expression)));
+        System.out.println("postfixed: " + postFixed);
+
+        Pemdas pemdas = new Pemdas();
+        int total = pemdas.Calculate(postFixed);
+
+        System.out.println("Total: " + total);
+
     }
 }
