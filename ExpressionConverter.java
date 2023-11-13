@@ -69,13 +69,6 @@ public class ExpressionConverter {
         return convertedExpression.toString();
     }
 
-    //helper methods
-    // public enum ConverterType{
-    //     PREFIX,
-    //     INFIX,
-    //     POSTFIX;
-    // }
-
     private void addToExpression(char character){
         convertedExpression.append(character);
     }

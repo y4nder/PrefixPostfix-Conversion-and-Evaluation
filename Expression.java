@@ -17,8 +17,8 @@ public class Expression {
         return expressionType;
     }
 
-    public void show(){
-        System.out.println(expressionType);
+    public String toString(){
+        // System.out.println(expressionType);
         String printedExpression = expression;
         char x = '_';
         while(true){
@@ -28,7 +28,8 @@ public class Expression {
             }
             else break;
         }
-        System.out.println(printedExpression);
+        // System.out.println(printedExpression);
+        return printedExpression;
     }
 
 }

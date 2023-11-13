@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main{
+public class MainDriver {
     public static void main(String[] args) {
         ExpressionConverter expConverter = new ExpressionConverter();
         Scanner scan = new Scanner(System.in);
@@ -11,8 +11,8 @@ public class Main{
         Expression postfixed = expConverter.toPostFix(expression);
         Expression prefixed = expConverter.toPrefix(expression);
 
-        postfixed.show();
-        prefixed.show();
+        System.out.println(postfixed);
+        System.out.println(prefixed);
         
         Pemdas p = new Pemdas();
         System.out.println("total of Postfix: " + p.evaluateExpression(postfixed));
