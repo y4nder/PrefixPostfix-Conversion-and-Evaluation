@@ -62,10 +62,12 @@ public class Pemdas {
         String thisExpression = subString;
         thisExpression = thisExpression.replace("_", " ");
         StringBuilder expression = new StringBuilder();
+
         for(int i : stack){
             expression.append(i + " ");
         }
         expression.append(thisExpression);
+
         if(convertType == Convert.TO_PREFIX){
             System.out.println("    " + expression.reverse().toString());
         }
