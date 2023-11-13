@@ -20,12 +20,26 @@ public class Pemdas {
     }
 
     public int solvePostFix(String s){
+        System.out.println("Solving Postfix expression " + s);
         return Calculate(s, Convert.TO_POSTFIX);
     }
 
     public int solvePrefix(String s){
+        System.out.println("Solving Prefix expression " + s);
         StringBuilder reversed = new StringBuilder(s);
         return Calculate(reversed.reverse().toString(), Convert.TO_PREFIX);
+    }
+
+    public int evaluateExpression(Expression e){
+        if(e.getExpressionType() == ExpressionType.POSTFIX){
+            System.out.println("Solving Postfix expression " + e.getExpression());
+            return Calculate(e.getExpression(), Convert.TO_POSTFIX);
+        }
+        else{
+            System.out.println("Solving Prefix expression " + e.getExpression());
+            StringBuilder reversed = new StringBuilder(e.getExpression());
+            return Calculate(reversed.reverse().toString(), Convert.TO_PREFIX);
+        }
     }
 
     private int Calculate(String s, Convert convertType){
