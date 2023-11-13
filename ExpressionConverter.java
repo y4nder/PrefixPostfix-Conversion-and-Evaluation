@@ -1,5 +1,7 @@
 import java.util.Stack;
 
+import MyPemdasFiles.ExpressionType;
+
 public class ExpressionConverter {
     private StringBuilder convertedExpression;
     private Stack<Character> stack;

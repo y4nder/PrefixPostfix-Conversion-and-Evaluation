@@ -1,6 +1,8 @@
+import MyPemdasFiles.ExpressionType;
+
 public class Expression {
-    private String expression;
-    private ExpressionType expressionType;
+    private final String expression;
+    private final ExpressionType expressionType;
 
     public Expression(String expression, ExpressionType expressionType) {
         this.expression = expression;
@@ -13,14 +15,6 @@ public class Expression {
     
     public ExpressionType getExpressionType() {
         return expressionType;
-    }
-
-    public void setExpression(String expression) {
-        this.expression = expression;
-    }
-
-    public void setExpressionType(ExpressionType expressionType) {
-        this.expressionType = expressionType;
     }
 
     public void show(){

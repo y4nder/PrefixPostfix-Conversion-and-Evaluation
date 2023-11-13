@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class NewMain extends ExpressionPrinter{
+public class Main{
     public static void main(String[] args) {
         ExpressionConverter expConverter = new ExpressionConverter();
         Scanner scan = new Scanner(System.in);
@@ -17,6 +17,6 @@ public class NewMain extends ExpressionPrinter{
         Pemdas p = new Pemdas();
         System.out.println("total of Postfix: " + p.evaluateExpression(postfixed));
         System.out.println("total of Postfix: " + p.evaluateExpression(prefixed));
-        
+        scan.close();
     }
 }
