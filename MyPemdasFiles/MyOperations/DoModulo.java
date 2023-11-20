@@ -20,4 +20,14 @@ public class DoModulo implements DoOperation{
         }
         stack.push(result);    
     }
+
+    @Override
+    public void evaluate(Stack<String> stack, boolean hasDecimal) {
+        int result = 0;
+        int a = Integer.parseInt(stack.pop());
+        int b = Integer.parseInt(stack.pop());
+        result = b % a;
+        stack.push(String.valueOf(result));
+
+    }
 }

@@ -12,14 +12,14 @@ public class MainDriver {
         //expression converting
         ExpressionConverter expConverter = new ExpressionConverter();
         Expression postfixed = expConverter.toPostFix(expression);
-        Expression prefixed = expConverter.toPrefix(expression);
+        // Expression prefixed = expConverter.toPrefix(expression);
         System.out.println("Postfixed: " + postfixed);
-        System.out.println("Prefixed: " + prefixed);
+        // System.out.println("Prefixed: " + prefixed);
         
         //expression evaluation
         Pemdas p = new Pemdas();
         System.out.println("total of Postfix: " + p.evaluateExpression(postfixed));
-        System.out.println("total of Postfix: " + p.evaluateExpression(prefixed));
+        // System.out.println("total of prefix: " + p.evaluateExpression(prefixed));
         scan.close();
     }
 }

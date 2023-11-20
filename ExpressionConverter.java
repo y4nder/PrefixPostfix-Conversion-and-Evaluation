@@ -5,10 +5,12 @@ import MyPemdasFiles.ExpressionType;
 public class ExpressionConverter {
     private StringBuilder convertedExpression;
     private Stack<Character> stack;
+    
+    private boolean isIntOrDecimal = false;
 
     public Expression toPostFix(String expression){
         String postfixed = dynamicConverter(expression, ExpressionType.POSTFIX); 
-        return new Expression(postfixed, ExpressionType.POSTFIX);
+        return new Expression(postfixed, ExpressionType.POSTFIX, isIntOrDecimal);
     }
 
     public Expression toPrefix(String expression){
@@ -18,7 +20,7 @@ public class ExpressionConverter {
         String postFixedExpression = dynamicConverter(convertedExpression.toString(), ExpressionType.PREFIX);
         convertedExpression.replace(0, convertedExpression.length(), postFixedExpression);
         convertedExpression.reverse();
-        return new Expression(convertedExpression.toString(), ExpressionType.PREFIX);
+        return new Expression(convertedExpression.toString(), ExpressionType.PREFIX, isIntOrDecimal);
     }
 
     private String dynamicConverter(String expression, ExpressionType expressionType){
@@ -44,6 +46,10 @@ public class ExpressionConverter {
                 default: 
                     if(isNumber(character)){
                         addToExpression(character);
+                    }
+                    else if(character == '.'){
+                        addToExpression(character);
+                        isIntOrDecimal = true;
                     }
                     else{
                         addToExpression('_'); //separator
