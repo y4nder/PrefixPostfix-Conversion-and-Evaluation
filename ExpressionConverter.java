@@ -1,3 +1,4 @@
+
 import java.util.Stack;
 
 import MyPemdasFiles.ExpressionType;
@@ -53,6 +54,7 @@ public class ExpressionConverter {
                     }
                     else{
                         addToExpression('_'); //separator
+                        if(character == '/') isIntOrDecimal = true;
                         if(expressionType == ExpressionType.PREFIX){
                             while(checkPrecedence(stack.peek()) > checkPrecedence(character) ){
                                 addToExpression(stack.pop());

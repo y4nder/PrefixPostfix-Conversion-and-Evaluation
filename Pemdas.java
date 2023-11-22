@@ -1,8 +1,10 @@
-import MyPemdasFiles.*;
-import MyPemdasFiles.MyOperations.*;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+
+import MyPemdasFiles.*;
+import MyPemdasFiles.MyOperations.*;
 
 public class Pemdas {
     private Stack<String> stack;
