@@ -27,7 +27,7 @@ public class ExpressionConverter {
     private String dynamicConverter(String expression, ExpressionType expressionType){
         convertedExpression = new StringBuilder();
         stack = new Stack<>();
-
+        char previous = '_';
         expression += ')';
         stack.push('(');
         for(int i = 0; i < expression.length(); i++){
@@ -36,6 +36,10 @@ public class ExpressionConverter {
                 case ' ':
                     break;
                 case '(':
+                    if(isParenthesesMultiplication(previous) ){ // added multiplication using parentheses
+                        addToExpression('_'); //separator from operator
+                        stack.push('*');
+                    }
                     stack.push(character);
                     break;
                 case ')':
@@ -47,6 +51,9 @@ public class ExpressionConverter {
                 default: 
                     if(isNumber(character)){
                         addToExpression(character);
+                    }
+                    else if(isUnaryMinusOperator(character, previous) ){ //check for unary minus
+                        stack.push('u');          
                     }
                     else if(character == '.'){
                         addToExpression(character);
@@ -67,9 +74,13 @@ public class ExpressionConverter {
                         }
                         stack.push(character);
                     }
-                break;
-            }
+                    break;
+                }
+            
+                if(character == ' ') previous = expression.charAt(i - 1);
+                else previous = character;
         }
+
         while(!stack.isEmpty()){
             addToExpression(stack.pop());
         }
@@ -93,8 +104,10 @@ public class ExpressionConverter {
             case '*':
             case '/':
                 return 2;
-            case '^':
+            case 'u':
                 return 3;
+            case '^':
+                return 4;
         }
         return 0;
     }
@@ -110,5 +123,24 @@ public class ExpressionConverter {
                 i++;
             }
         }
+    }
+
+    //private methods
+    private boolean isParenthesesMultiplication(char character){ // method to check if multiplication by parentheses is true
+        if(isNumber(character) || character == ')') return true;
+        else return false;
+    }
+
+    private boolean isUnaryMinusOperator(char character, char previous){ //method to check if unary minus opration is true
+        if( character == '-' && (previous == '_' || previous == '(' || checkPrecedence(previous) > 0) ) return true;
+        else return false;
+    }
+
+    public static void main(String[] args) {
+        ExpressionConverter ec = new ExpressionConverter();
+        String s = "2(2)";
+        Expression e = ec.toPostFix(s);
+        System.out.println(e);
+
     }
 }
